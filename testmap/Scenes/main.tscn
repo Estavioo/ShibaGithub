@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://o10m4vbsqi1m"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_iat7f"]
+[ext_resource type="PackedScene" uid="uid://xbbm7yt4hljb" path="res://Scenes/shrine.tscn" id="2_1lm3k"]
+[ext_resource type="PackedScene" uid="uid://cnqfl2e6a1il2" path="res://Scenes/character_body_2d.tscn" id="2_wcfnf"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="4_go132"]
+[ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="5_cw5kw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
+size = Vector2(124, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xd74"]
+size = Vector2(22.25, 928.313)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_iat7f")
+
+[node name="Shrine" parent="." instance=ExtResource("2_1lm3k")]
+
+[node name="Shrine2" parent="." instance=ExtResource("2_1lm3k")]
+position = Vector2(1920, 0)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_wcfnf")]
+position = Vector2(779, 65)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(0.6, 0.6)
+limit_left = -960
+limit_top = -540
+limit_right = 960
+limit_bottom = 540
+script = ExtResource("4_go132")
+
+[node name="Shrine3" parent="." instance=ExtResource("2_1lm3k")]
+position = Vector2(3840, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1022, 0)
+shape = SubResource("RectangleShape2D_55i3f")
+
+[node name="scene1-2 connector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1-2 connector"]
+position = Vector2(960, -74)
+shape = SubResource("RectangleShape2D_8xd74")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(1150, -419)
+texture = ExtResource("5_cw5kw")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(773, -414)
+texture = ExtResource("5_cw5kw")
+
+[connection signal="body_exited" from="scene1-2 connector" to="CharacterBody2D/Camera2D" method="_on_scene_12_connector_body_exited"]

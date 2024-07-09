@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnqfl2e6a1il2"]
+
+[ext_resource type="Script" path="res://Code/CharacterBody2D.gd" id="1_em4x2"]
+[ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="2_fun2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o6h2"]
+size = Vector2(2, 2)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 6
+platform_floor_layers = 4294967043
+script = ExtResource("1_em4x2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fun2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0o6h2")
+
+[node name="Dash" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="CanDash" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Dash" to="." method="_on_dash_timeout"]
+[connection signal="timeout" from="CanDash" to="." method="_on_can_dash_timeout"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://xbbm7yt4hljb"]
+
+[ext_resource type="Texture2D" uid="uid://dcq474uap1t2c" path="res://Sprites/shrine.png" id="1_v4537"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q74x6"]
+size = Vector2(1920, 149.5)
+
+[node name="Shrine" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v4537")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 465.75)
+shape = SubResource("RectangleShape2D_q74x6")
