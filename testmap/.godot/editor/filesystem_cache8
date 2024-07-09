@@ -1,0 +1,14 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1720517849
+::res://Code/::1720517827
+CharacterBody2D.gd::GDScript::-1::1720517827::0::1::::<>CharacterBody2D<>::
+::res://Scenes/::1720517827
+Camera2D.gd::GDScript::-1::1720517827::0::1::::<>Camera2D<>::
+character_body_2d.tscn::PackedScene::5718651033161566945::1720517827::0::1::::<><>::res://Code/CharacterBody2D.gd<>uid://dgrmkak6bykgx::::res://Sprites/icon.svg
+main.gd::GDScript::-1::1720517827::0::1::::<>Node2D<>::
+main.tscn::PackedScene::1037858542572203296::1720517827::0::1::::<><>::res://Scenes/main.gd<>uid://xbbm7yt4hljb::::res://Scenes/shrine.tscn<>uid://cnqfl2e6a1il2::::res://Scenes/character_body_2d.tscn<>res://Scenes/Camera2D.gd<>uid://dgrmkak6bykgx::::res://Sprites/icon.svg
+map_node.tscn::PackedScene::1660382138022748349::1720517827::0::1::::<><>::uid://dgrmkak6bykgx::::res://Sprites/icon.svg
+shrine.tscn::PackedScene::1616491646673255367::1720517827::0::1::::<><>::uid://dcq474uap1t2c::::res://Sprites/shrine.png
+::res://Sprites/::1720517827
+icon.svg::CompressedTexture2D::7616236013437593915::1720517827::1720517850::1::::<><>::
+shrine.png::CompressedTexture2D::7334489274709840804::1720517827::1720517850::1::::<><>::
