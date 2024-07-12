@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://o10m4vbsqi1m"]
+[gd_scene load_steps=9 format=3 uid="uid://o10m4vbsqi1m"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iat7f"]
 [ext_resource type="PackedScene" uid="uid://xbbm7yt4hljb" path="res://Scenes/shrine.tscn" id="2_1lm3k"]
 [ext_resource type="PackedScene" uid="uid://cnqfl2e6a1il2" path="res://Scenes/character_body_2d.tscn" id="2_wcfnf"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="4_go132"]
 [ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="5_cw5kw"]
+[ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/healthbar_2.tscn" id="6_3diql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
 size = Vector2(124, 1080)
@@ -30,6 +31,12 @@ limit_top = -540
 limit_right = 960
 limit_bottom = 540
 script = ExtResource("4_go132")
+
+[node name="Healthbar2" parent="CharacterBody2D" instance=ExtResource("6_3diql")]
+offset_left = -113.0
+offset_top = -89.0
+offset_right = 103.0
+offset_bottom = -62.0
 
 [node name="Shrine3" parent="." instance=ExtResource("2_1lm3k")]
 position = Vector2(3840, 0)

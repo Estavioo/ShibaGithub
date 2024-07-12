@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://byjtbe7c44ctb"]
+
+[ext_resource type="PackedScene" uid="uid://enuweh6l1a6d" path="res://Scenes/Floor.tscn" id="1_juq7l"]
+[ext_resource type="PackedScene" uid="uid://bqahe6efekenc" path="res://Scenes/main_bg.tscn" id="2_ht6xe"]
+[ext_resource type="PackedScene" uid="uid://bygso6m6rhsij" path="res://Scenes/boss.tscn" id="4_5ibiu"]
+[ext_resource type="PackedScene" uid="uid://df1i0yf543yum" path="res://Scenes/static.tscn" id="4_b44yl"]
+
+[node name="BossScene" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(962, 542)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_juq7l")]
+position = Vector2(-4, 116)
+
+[node name="MainBG" parent="." instance=ExtResource("2_ht6xe")]
+
+[node name="Boss" parent="." instance=ExtResource("4_5ibiu")]
+position = Vector2(1637, 691)
+
+[node name="Static" parent="." instance=ExtResource("4_b44yl")]
+position = Vector2(176, 825)
+scale = Vector2(0.441477, 0.4104)

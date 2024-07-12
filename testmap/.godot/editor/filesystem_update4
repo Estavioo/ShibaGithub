@@ -1,1 +1,6 @@
+res://main_menu/full_menu.tscn
+res://main_menu/full_menu.gd
 res://Scenes/main.tscn
+res://main_menu/optimized_options_menu.tscn
+res://main_menu/settings_tab.tscn
+res://Scenes/character_body_2d.tscn

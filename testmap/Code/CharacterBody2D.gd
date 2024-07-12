@@ -1,5 +1,12 @@
 extends CharacterBody2D
 
+class_name GameData
+
+
+var save_file_path = "user://save/"
+var save_file_name = "PlayerSave.tres"
+var playerData = PlayerData.new()
+
 const SPEED = 49870
 const JUMP_VELOCITY = -500.0
 
@@ -12,6 +19,26 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Store the player's facing direction
 var facing_direction = Vector2.RIGHT
+
+var health = 100
+
+func _ready():
+	verify_save_directory(save_file_path)
+
+func verify_save_directory(path: String):
+	DirAccess.make_dir_absolute(path)
+	
+func load_data():
+	playerData = ResourceLoader.load(save_file_path + save_file_name).duplicate(true)
+	on_start_load()
+	print("loaded")
+	
+func on_start_load():
+	self.position = playerData.SavePos
+
+func save():
+	ResourceSaver.save(playerData, save_file_path + save_file_name)
+	print("saved")	
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -47,6 +74,12 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 			#$AnimatedSprite2D.play("default")
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("Save"):
+		save()
+	if Input.is_action_just_pressed("Load"):
+		load_data()
+	playerData.UpdatePos(self.position)
 
 func _on_dash_timeout():
 	dashing = false
