@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://o10m4vbsqi1m"]
+[gd_scene load_steps=11 format=3 uid="uid://o10m4vbsqi1m"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iat7f"]
 [ext_resource type="PackedScene" uid="uid://xbbm7yt4hljb" path="res://Scenes/shrine.tscn" id="2_1lm3k"]
-[ext_resource type="PackedScene" uid="uid://cnqfl2e6a1il2" path="res://Scenes/character_body_2d.tscn" id="2_wcfnf"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="4_go132"]
+[ext_resource type="PackedScene" uid="uid://cnqfl2e6a1il2" path="res://Scenes/Player.tscn" id="4_k6v5e"]
 [ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="5_cw5kw"]
+[ext_resource type="Script" path="res://HealthBar/Scene/Kappa_Healthbar.gd" id="5_j2iay"]
 [ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/Scene/healthbar_2.tscn" id="5_t168k"]
 [ext_resource type="PackedScene" uid="uid://bco27vvwvmxq3" path="res://Scenes/KAPPA.tscn" id="7_74rcf"]
 
@@ -24,7 +25,14 @@ position = Vector2(1920, 0)
 
 [node name="Kappa" parent="." instance=ExtResource("7_74rcf")]
 
-[node name="Player" parent="." instance=ExtResource("2_wcfnf")]
+[node name="KAPPA_Health2" parent="Kappa" instance=ExtResource("5_t168k")]
+offset_left = -104.0
+offset_top = -104.0
+offset_right = 112.0
+offset_bottom = -77.0
+script = ExtResource("5_j2iay")
+
+[node name="Player" parent="." instance=ExtResource("4_k6v5e")]
 position = Vector2(779, 65)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bco27vvwvmxq3"]
+[gd_scene load_steps=7 format=3 uid="uid://bco27vvwvmxq3"]
 
 [ext_resource type="Script" path="res://Code/KAPPA.gd" id="1_nd6id"]
 [ext_resource type="Texture2D" uid="uid://g0klqgkjvpd4" path="res://Sprites/sword_ice.png" id="1_w5qvk"]
-[ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/Scene/healthbar_2.tscn" id="3_aebwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6buaw"]
 size = Vector2(57, 143)
@@ -55,12 +54,6 @@ collision_mask = 4
 [node name="Detection Area" type="CollisionShape2D" parent="Detection"]
 position = Vector2(157, 1)
 shape = SubResource("RectangleShape2D_yx77e")
-
-[node name="KAPPA_Health" parent="." instance=ExtResource("3_aebwn")]
-offset_left = -104.0
-offset_top = -104.0
-offset_right = 112.0
-offset_bottom = -77.0
 
 [connection signal="area_entered" from="Attack Range" to="." method="_on_attack_range_area_entered"]
 [connection signal="area_exited" from="Attack Range" to="." method="_on_attack_range_area_exited"]

@@ -18,7 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var detection_range = $"Detection/Detection Area"
 @onready var attack_range = $"Attack Range/Attack Range"
 @onready var damage_range = $"Damage/Damage Trigger"
-@onready var healthbar = $KAPPA_Health
+@onready var healthbar = $KAPPA_Health2
 
 var player_attack = false
 var player_chase = false

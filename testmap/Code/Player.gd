@@ -61,9 +61,9 @@ func _physics_process(delta):
 
 func player_attack():
 	switch_state()
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("Attack"):
 		print(str(damage))
-	if Input.is_action_just_pressed("attack") and enemy_inrange == true:
+	if Input.is_action_just_pressed("Attack") and enemy_inrange == true:
 		print("Oke")
 
 func switch_state():
