@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdkisn5ytscqd"]
 
-[ext_resource type="Script" path="res://main_menu/full_menu.gd" id="1_q2pyo"]
-[ext_resource type="PackedScene" uid="uid://w6i864an3ukd" path="res://main_menu/optimized_options_menu.tscn" id="2_yne4y"]
-[ext_resource type="AudioStream" uid="uid://cgw2shwjeq6of" path="res://Songs/BOSS.mp3" id="3_286p1"]
+[ext_resource type="Script" path="res://main_menu/Script/full_menu.gd" id="1_nv4r3"]
+[ext_resource type="PackedScene" uid="uid://w6i864an3ukd" path="res://main_menu/Scene/optimized_options_menu.tscn" id="2_mbiqt"]
+[ext_resource type="AudioStream" uid="uid://cgw2shwjeq6of" path="res://Songs/BOSS.mp3" id="3_74cnv"]
 
 [sub_resource type="SystemFont" id="SystemFont_nklhy"]
 font_names = PackedStringArray("Forte")
@@ -14,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_q2pyo")
+script = ExtResource("1_nv4r3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -95,11 +95,11 @@ theme_override_fonts/font = SubResource("SystemFont_nklhy")
 theme_override_font_sizes/font_size = 36
 text = "QUIT"
 
-[node name="OptimizedOptionsMenu" parent="." instance=ExtResource("2_yne4y")]
+[node name="OptimizedOptionsMenu" parent="." instance=ExtResource("2_mbiqt")]
 visible = false
 layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_286p1")
+stream = ExtResource("3_74cnv")
 autoplay = true
 bus = &"MUSIC"

@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://djjni2gvwo737"]
 
-[ext_resource type="Script" path="res://HealthBar/healthbar_2.gd" id="1_x2lqh"]
+[ext_resource type="Script" path="res://HealthBar/Script/healthbar_2.gd" id="1_x2lqh"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3qpu"]
 skew = Vector2(1, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdlw8v3yw78qd"]
 
-[ext_resource type="PackedScene" uid="uid://cktqs7vnf2gjg" path="res://main_menu/window_mode_button.tscn" id="1_1j5b4"]
-[ext_resource type="PackedScene" uid="uid://bllvd0clb550s" path="res://main_menu/audio_slider_setting.tscn" id="1_430g6"]
+[ext_resource type="PackedScene" uid="uid://bllvd0clb550s" path="res://main_menu/Scene/audio_slider_setting.tscn" id="1_0cmm4"]
+[ext_resource type="PackedScene" uid="uid://cktqs7vnf2gjg" path="res://main_menu/Scene/window_mode_button.tscn" id="2_l6fvx"]
 
 [node name="Settings_Tab" type="Control"]
 layout_mode = 3
@@ -48,14 +48,14 @@ layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Audio_Slider_Setting" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_430g6")]
+[node name="Audio_Slider_Setting" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0cmm4")]
 layout_mode = 2
 
-[node name="Audio_Slider_Setting2" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_430g6")]
+[node name="Audio_Slider_Setting2" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0cmm4")]
 layout_mode = 2
 bus_name = "MUSIC"
 
-[node name="Audio_Slider_Setting3" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_430g6")]
+[node name="Audio_Slider_Setting3" parent="TabContainer/Audio/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0cmm4")]
 layout_mode = 2
 bus_name = "SFX"
 
@@ -84,5 +84,5 @@ layout_mode = 2
 theme_override_constants/separation = 120
 alignment = 1
 
-[node name="Window_Mode_Button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1j5b4")]
+[node name="Window_Mode_Button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_l6fvx")]
 layout_mode = 2

@@ -1,16 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://w6i864an3ukd"]
+[gd_scene load_steps=3 format=3 uid="uid://b2oww0vjks4lm"]
 
-[ext_resource type="Script" path="res://main_menu/optimized_options_menu.gd" id="1_3ok4j"]
-[ext_resource type="PackedScene" uid="uid://bdlw8v3yw78qd" path="res://main_menu/settings_tab.tscn" id="2_y5is2"]
+[ext_resource type="Script" path="res://main_menu/Script/pause_options_menu.gd" id="1_deap2"]
+[ext_resource type="PackedScene" uid="uid://bdlw8v3yw78qd" path="res://main_menu/Scene/settings_tab.tscn" id="2_a2a1x"]
 
-[node name="OptimizedOptionsMenu" type="Control"]
+
+[node name="PausedOptionsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3ok4j")
+script = ExtResource("1_deap2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,7 +37,7 @@ text = "Options
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings_Tab" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_y5is2")]
+[node name="Settings_Tab" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_a2a1x")]
 layout_mode = 2
 size_flags_vertical = 3
 

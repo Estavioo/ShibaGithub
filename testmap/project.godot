@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Testmap"
-run/main_scene="res://main_menu/full_menu.tscn"
-config/features=PackedStringArray("4.1", "GL Compatibility")
+run/main_scene="res://main_menu/Scene/full_menu.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Sprites/icon.svg"
 
 [dotnet]

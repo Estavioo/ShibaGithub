@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccbhx3bfmfidr"]
 
-[ext_resource type="Script" path="res://main_menu/optimized_pause_menu.gd" id="1_dgfge"]
-[ext_resource type="PackedScene" uid="uid://b2oww0vjks4lm" path="res://main_menu/pause_options_menu.tscn" id="2_rn7ud"]
+[ext_resource type="Script" path="res://main_menu/Script/optimized_pause_menu.gd" id="1_dgfge"]
+[ext_resource type="PackedScene" uid="uid://b2oww0vjks4lm" path="res://main_menu/Scene/pause_options_menu.tscn" id="2_rn7ud"]
+
 
 [node name="OptimizedPauseMenu" type="Control"]
 layout_mode = 3

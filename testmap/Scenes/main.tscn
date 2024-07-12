@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cnqfl2e6a1il2" path="res://Scenes/character_body_2d.tscn" id="2_wcfnf"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="4_go132"]
 [ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="5_cw5kw"]
-[ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/healthbar_2.tscn" id="6_3diql"]
+[ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/Scene/healthbar_2.tscn" id="5_t168k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
 size = Vector2(124, 1080)
@@ -32,7 +32,7 @@ limit_right = 960
 limit_bottom = 540
 script = ExtResource("4_go132")
 
-[node name="Healthbar2" parent="CharacterBody2D" instance=ExtResource("6_3diql")]
+[node name="Healthbar2" parent="CharacterBody2D" instance=ExtResource("5_t168k")]
 offset_left = -113.0
 offset_top = -89.0
 offset_right = 103.0

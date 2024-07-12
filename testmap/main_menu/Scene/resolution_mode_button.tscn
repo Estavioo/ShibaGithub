@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://71b338l6ocmv"]
 
-[ext_resource type="PackedScene" uid="uid://d344s2gf7j2h5" path="res://main_menu/options_display_button.tscn" id="1_5ab2m"]
-[ext_resource type="Script" path="res://main_menu/resolution_mode_button.gd" id="2_870wm"]
+[ext_resource type="PackedScene" uid="uid://d344s2gf7j2h5" path="res://main_menu/Scene/options_display_button.tscn" id="1_5ab2m"]
+[ext_resource type="Script" path="res://main_menu/Script/resolution_mode_button.gd" id="2_870wm"]
+
 
 [node name="Resolution_Mode_Button" instance=ExtResource("1_5ab2m")]
 script = ExtResource("2_870wm")
