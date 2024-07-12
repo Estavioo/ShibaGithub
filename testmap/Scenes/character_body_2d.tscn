@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnqfl2e6a1il2"]
+[gd_scene load_steps=6 format=3 uid="uid://cnqfl2e6a1il2"]
 
 [ext_resource type="Script" path="res://Code/CharacterBody2D.gd" id="1_em4x2"]
 [ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="2_fun2b"]
@@ -6,7 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o6h2"]
 size = Vector2(2, 2)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4qfx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn0t0"]
+
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 platform_floor_layers = 4294967043
 script = ExtResource("1_em4x2")
@@ -24,5 +28,24 @@ one_shot = true
 [node name="CanDash" type="Timer" parent="."]
 one_shot = true
 
+[node name="Body" type="Area2D" parent="." groups=["player_body"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("RectangleShape2D_s4qfx")
+
+[node name="Attack_Defense" type="Area2D" parent="." groups=["player_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Defense"]
+shape = SubResource("RectangleShape2D_cn0t0")
+
+[node name="atk_cool" type="Timer" parent="."]
+
 [connection signal="timeout" from="Dash" to="." method="_on_dash_timeout"]
 [connection signal="timeout" from="CanDash" to="." method="_on_can_dash_timeout"]
+[connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
+[connection signal="area_exited" from="Body" to="." method="_on_body_area_exited"]
+[connection signal="body_entered" from="Body" to="." method="_on_body_body_entered"]
+[connection signal="body_exited" from="Body" to="." method="_on_body_body_exited"]
+[connection signal="area_entered" from="Attack_Defense" to="." method="_on_attack_defense_area_entered"]
+[connection signal="area_exited" from="Attack_Defense" to="." method="_on_attack_defense_area_exited"]
+[connection signal="timeout" from="atk_cool" to="." method="_on_atk_cool_timeout"]

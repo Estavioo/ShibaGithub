@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://HealthBar/Script/healthbar_2.gd" id="1_x2lqh"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3qpu"]
 skew = Vector2(1, 0)
 border_width_left = 3

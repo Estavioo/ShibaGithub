@@ -1,30 +1,38 @@
 extends CharacterBody2D
 
 class_name GameData
-
+enum State {HAYAI, TSUYOI}
 
 var save_file_path = "user://save/"
 var save_file_name = "PlayerSave.tres"
 var playerData = PlayerData.new()
 
-const SPEED = 49870
+var SPEED = 49870
 const JUMP_VELOCITY = -500.0
 
 const SPEED_DASH = 149610
 var dashing = false
 var can_dash = true
+var current_state = State.HAYAI
 
+var damage = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
 # Store the player's facing direction
 var facing_direction = Vector2.RIGHT
-
 var health = 100
+var regen = false
+@onready var healthbar = $Player_Health
+
+var enemy_inrange = false
+var enemy_cooldown = true
+var player_alive = true
 
 func _ready():
 	verify_save_directory(save_file_path)
-
+	
 func verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 	
@@ -41,6 +49,63 @@ func save():
 	print("saved")	
 
 func _physics_process(delta):
+	save_progress()
+	player_movement(delta)
+	player_health(delta)
+	player_attack()
+	
+	
+	#test healthbar
+	#if Input.is_action_just_pressed("Left"):
+	#	healthbar.value -= 20
+
+func player_attack():
+	switch_state()
+	if Input.is_action_just_pressed("attack"):
+		print(str(damage))
+	if Input.is_action_just_pressed("attack") and enemy_inrange == true:
+		print("Oke")
+
+func switch_state():
+	if Input.is_action_just_pressed("switch_state"):
+		if current_state == State.HAYAI:
+			print("Switched to TSUYOI")
+			current_state = State.TSUYOI
+			SPEED = 10
+			damage = 20
+		else:
+			current_state = State.HAYAI
+			print("Switched to HAYAI")
+			SPEED = 600.0
+			damage = 30
+
+func enemy_atk():
+	if enemy_inrange and enemy_cooldown == true:
+		health -= 5
+		enemy_cooldown = false
+		$atk_cool.start()
+		print(health)
+
+
+func player_health(delta):
+	#Still can't heal for each timer interval
+	if healthbar.value < 100:
+		regen = true
+	else:
+		regen = false
+	if regen:
+		healthbar.health_regen(delta)
+	if Input.is_action_just_pressed("Left"):
+		healthbar.value -= 20
+		
+func save_progress():
+	if Input.is_action_just_pressed("Save"):
+		save()
+	if Input.is_action_just_pressed("Load"):
+		load_data()
+	playerData.UpdatePos(self.position)
+	
+func player_movement(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -74,14 +139,27 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 			#$AnimatedSprite2D.play("default")
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("Save"):
-		save()
-	if Input.is_action_just_pressed("Load"):
-		load_data()
-	playerData.UpdatePos(self.position)
 
 func _on_dash_timeout():
 	dashing = false
+	
 func _on_can_dash_timeout():
 	can_dash = true
+
+func _on_atk_cool_timeout():
+	enemy_cooldown = true
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("enemy attackrange"):
+		enemy_inrange = true
+func _on_area_2d_area_exited(area):
+	if area.is_in_group("enemy attackrange"):
+		enemy_inrange = false
+
+
+func _on_attack_defense_area_entered(area):
+	if area.is_in_group("enemy"):
+		print("enemy")
+
+func _on_attack_defense_area_exited(area):
+	pass # Replace with function body.
