@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="2_fun2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o6h2"]
-size = Vector2(2, 2)
+size = Vector2(131, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4qfx"]
+size = Vector2(131, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn0t0"]
+size = Vector2(50, 130)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
@@ -19,6 +21,7 @@ script = ExtResource("1_em4x2")
 texture = ExtResource("2_fun2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_0o6h2")
 
 [node name="Dash" type="Timer" parent="."]
@@ -29,14 +32,22 @@ one_shot = true
 one_shot = true
 
 [node name="Body" type="Area2D" parent="." groups=["player_body"]]
+visible = false
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_s4qfx")
 
-[node name="Attack_Defense" type="Area2D" parent="." groups=["player_hitbox"]]
+[node name="Attack_Defense" type="Area2D" parent="." groups=["Attack"]]
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Defense"]
+position = Vector2(-110, 0)
 shape = SubResource("RectangleShape2D_cn0t0")
+debug_color = Color(0.707418, 0.477769, 0.276075, 0.42)
 
 [node name="atk_cool" type="Timer" parent="."]
 

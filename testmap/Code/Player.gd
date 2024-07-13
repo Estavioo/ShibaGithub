@@ -8,6 +8,8 @@ var save_file_name = "PlayerSave.tres"
 var playerData = PlayerData.new()
 
 var SPEED = 49870
+var SPEED_HAYAI = SPEED
+var SPEED_TSUYOI = 60000
 const JUMP_VELOCITY = -500.0
 
 const SPEED_DASH = 149610
@@ -25,6 +27,7 @@ var facing_direction = Vector2.RIGHT
 var health = 100
 var regen = false
 @onready var healthbar = $Player_Health
+@onready var kappa_health_2 = $"../Kappa/KAPPA_Health2"
 
 var enemy_inrange = false
 var enemy_cooldown = true
@@ -32,6 +35,8 @@ var player_alive = true
 
 func _ready():
 	verify_save_directory(save_file_path)
+	health = healthbar.value
+	healthbar.value = health
 	
 func verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
@@ -51,52 +56,43 @@ func save():
 func _physics_process(delta):
 	save_progress()
 	player_movement(delta)
-	player_health(delta)
+	player_health()
 	player_attack()
 	
+	if regen and enemy_inrange == false:
+		healthbar.health_regen()
 	
-	#test healthbar
+	#test Player Healthbar
 	#if Input.is_action_just_pressed("Left"):
-	#	healthbar.value -= 20
+	#	healthbar.value -= 50
+	
 
 func player_attack():
 	switch_state()
 	if Input.is_action_just_pressed("Attack"):
 		print(str(damage))
-	if Input.is_action_just_pressed("Attack") and enemy_inrange == true:
-		print("Oke")
+		if enemy_inrange:
+			print("attacked")
+			kappa_health_2.health_damaged()
 
 func switch_state():
 	if Input.is_action_just_pressed("switch_state"):
 		if current_state == State.HAYAI:
 			print("Switched to TSUYOI")
 			current_state = State.TSUYOI
-			SPEED = 10
+			SPEED = SPEED_TSUYOI
 			damage = 20
 		else:
 			current_state = State.HAYAI
 			print("Switched to HAYAI")
-			SPEED = 600.0
+			SPEED = SPEED_HAYAI
 			damage = 30
 
-func enemy_atk():
-	if enemy_inrange and enemy_cooldown == true:
-		health -= 5
-		enemy_cooldown = false
-		$atk_cool.start()
-		print(health)
-
-
-func player_health(delta):
-	#Still can't heal for each timer interval
+func player_health():
 	if healthbar.value < 100:
 		regen = true
 	else:
 		regen = false
-	if regen:
-		healthbar.health_regen(delta)
-	if Input.is_action_just_pressed("Left"):
-		healthbar.value -= 20
 		
 func save_progress():
 	if Input.is_action_just_pressed("Save"):
@@ -149,17 +145,23 @@ func _on_can_dash_timeout():
 func _on_atk_cool_timeout():
 	enemy_cooldown = true
 
-func _on_area_2d_area_entered(area):
-	if area.is_in_group("enemy attackrange"):
-		enemy_inrange = true
-func _on_area_2d_area_exited(area):
-	if area.is_in_group("enemy attackrange"):
-		enemy_inrange = false
-
-
 func _on_attack_defense_area_entered(area):
-	if area.is_in_group("enemy"):
-		print("enemy")
+	if area.is_in_group("enemy_body"):
+		enemy_inrange = true
 
 func _on_attack_defense_area_exited(area):
-	pass # Replace with function body.
+	if area.is_in_group("enemy_body"):
+		enemy_inrange = false
+
+func enemy_atk():
+	if enemy_inrange and enemy_cooldown == true:
+		health -= 5
+		enemy_cooldown = false
+		$atk_cool.start()
+		print(health)
+func _on_body_area_entered(area):
+	if area.is_in_group("enemy attackrange"):
+		pass
+func _on_body_area_exited(area):
+	if area.is_in_group("enemy attackrange"):
+		pass

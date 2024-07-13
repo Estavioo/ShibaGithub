@@ -48,6 +48,7 @@ offset_left = -113.0
 offset_top = -89.0
 offset_right = 103.0
 offset_bottom = -62.0
+value = 100.0
 
 [node name="Shrine3" parent="." instance=ExtResource("2_1lm3k")]
 position = Vector2(3840, 0)

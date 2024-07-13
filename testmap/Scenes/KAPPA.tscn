@@ -6,14 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6buaw"]
 size = Vector2(57, 143)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_456w2"]
-size = Vector2(20, 138)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r22ew"]
-size = Vector2(21, 140)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s5xg"]
+size = Vector2(55, 143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yx77e"]
 size = Vector2(231, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_456w2"]
+size = Vector2(58, 142)
 
 [node name="KAPPA" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -25,39 +25,33 @@ texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("1_w5qvk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_6buaw")
 
-[node name="Attack Range" type="Area2D" parent="." groups=["enemy_attackRange"]]
-collision_layer = 4
-collision_mask = 4
+[node name="Body" type="Area2D" parent="." groups=["enemy_body"]]
 
-[node name="Attack Range" type="CollisionShape2D" parent="Attack Range"]
-position = Vector2(53, 0)
-shape = SubResource("RectangleShape2D_456w2")
-debug_color = Color(0.909492, 0.220964, 0.51015, 0.42)
-
-[node name="Damage" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="Damage Trigger" type="CollisionShape2D" parent="Damage"]
-position = Vector2(74, 0)
-shape = SubResource("RectangleShape2D_r22ew")
-debug_color = Color(0.148439, 0.627665, 0.435398, 0.42)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_3s5xg")
 
 [node name="Detection" type="Area2D" parent="." groups=["enemy_hitbox"]]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="Detection Area" type="CollisionShape2D" parent="Detection"]
-position = Vector2(157, 1)
+position = Vector2(-149, 0)
 shape = SubResource("RectangleShape2D_yx77e")
+debug_color = Color(0.510463, 0.577854, 3.85046e-07, 0.42)
 
-[connection signal="area_entered" from="Attack Range" to="." method="_on_attack_range_area_entered"]
-[connection signal="area_exited" from="Attack Range" to="." method="_on_attack_range_area_exited"]
-[connection signal="body_entered" from="Attack Range" to="." method="_on_attack_range_body_entered"]
-[connection signal="area_entered" from="Damage" to="." method="_on_damage_area_entered"]
+[node name="Attack Range" type="Area2D" parent="." groups=["enemy_attackRange"]]
+
+[node name="Attack Range" type="CollisionShape2D" parent="Attack Range"]
+position = Vector2(-62, 0)
+shape = SubResource("RectangleShape2D_456w2")
+debug_color = Color(1, 0, 0, 0.419608)
+
 [connection signal="area_entered" from="Detection" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="Detection" to="." method="_on_detection_area_exited"]
+[connection signal="area_entered" from="Attack Range" to="." method="_on_attack_range_area_entered"]
+[connection signal="area_exited" from="Attack Range" to="." method="_on_attack_range_area_exited"]
