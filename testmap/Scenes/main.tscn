@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://o10m4vbsqi1m"]
+[gd_scene load_steps=12 format=3 uid="uid://o10m4vbsqi1m"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iat7f"]
 [ext_resource type="PackedScene" uid="uid://xbbm7yt4hljb" path="res://Scenes/shrine.tscn" id="2_1lm3k"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://HealthBar/Scene/Kappa_Healthbar.gd" id="5_j2iay"]
 [ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/Scene/healthbar_2.tscn" id="5_t168k"]
 [ext_resource type="PackedScene" uid="uid://bco27vvwvmxq3" path="res://Scenes/KAPPA.tscn" id="7_74rcf"]
+[ext_resource type="PackedScene" uid="uid://ldxt1rtk0wlm" path="res://obstacle_placeholder.tscn" id="9_5sotv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
 size = Vector2(124, 1080)
@@ -23,7 +24,30 @@ script = ExtResource("1_iat7f")
 [node name="Shrine2" parent="." instance=ExtResource("2_1lm3k")]
 position = Vector2(1920, 0)
 
+[node name="Node" type="Node" parent="."]
+
+[node name="Obstacle Placeholder" parent="Node" instance=ExtResource("9_5sotv")]
+position = Vector2(2174, 296)
+scale = Vector2(2.68, 0.2)
+
+[node name="Obstacle Placeholder2" parent="Node" instance=ExtResource("9_5sotv")]
+position = Vector2(2599, 226)
+scale = Vector2(3.03215, 0.205584)
+
+[node name="Obstacle Placeholder3" parent="Node" instance=ExtResource("9_5sotv")]
+position = Vector2(1443, 116)
+scale = Vector2(3.12, 0.159999)
+
+[node name="Obstacle Placeholder4" parent="Node" instance=ExtResource("9_5sotv")]
+position = Vector2(2423, 24)
+scale = Vector2(3.12, 0.159999)
+
+[node name="Obstacle Placeholder5" parent="Node" instance=ExtResource("9_5sotv")]
+position = Vector2(1909, -82)
+scale = Vector2(3.12, 0.159999)
+
 [node name="Kappa" parent="." instance=ExtResource("7_74rcf")]
+position = Vector2(-105, -30)
 
 [node name="KAPPA_Health2" parent="Kappa" instance=ExtResource("5_t168k")]
 offset_left = -104.0
@@ -50,15 +74,20 @@ offset_right = 103.0
 offset_bottom = -62.0
 value = 100.0
 
-[node name="Shrine3" parent="." instance=ExtResource("2_1lm3k")]
-position = Vector2(3840, 0)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-1022, 0)
+shape = SubResource("RectangleShape2D_55i3f")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(2940, 0)
 shape = SubResource("RectangleShape2D_55i3f")
 
 [node name="scene1-2 connector" type="Area2D" parent="."]

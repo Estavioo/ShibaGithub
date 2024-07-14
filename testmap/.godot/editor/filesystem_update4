@@ -1,10 +1,5 @@
 res://Scenes/main.tscn
-res://main_menu/Scene/optimized_options_menu.tscn
-res://main_menu/Scene/settings_tab.tscn
-res://main_menu/Scene/full_menu.tscn
 res://Scenes/KAPPA.tscn
 res://Scenes/Player.tscn
-res://Code/KAPPA.gd
-res://HealthBar/Script/healthbar_2.gd
-res://Code/Player.gd
-res://HealthBar/Scene/Kappa_Healthbar.gd
+res://obstacle_placeholder.tscn
+res://Scenes/Camera2D.gd
