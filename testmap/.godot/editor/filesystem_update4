@@ -1,7 +1,5 @@
-res://obstacle_placeholder.tscn
 res://Scenes/main.tscn
 res://Scenes/KAPPA.tscn
 res://Scenes/Player.tscn
-res://sample.tscn
-res://Scenes/Camera2D.gd
-res://Scenes/shrine.tscn
+res://Code/Player.gd
+res://Code/KAPPA.gd

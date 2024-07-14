@@ -30,6 +30,9 @@ func _ready():
 func _physics_process(delta):
 	enemy_movement(delta)
 	enemy_health()
+	
+	
+	
 func enemy_movement(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -47,16 +50,15 @@ func enemy_movement(delta):
 			default_direction = 1
 			detection_range.position.x = 168
 			attack_range.position.x = 80
-			
-			
+	
+	elif is_on_wall() and player_attack:
+		velocity.x = 0	
+	
 	velocity.x = default_direction * SPEED
 	
 	if player_chase:
 		player_chasing(delta)
-
-	elif player_attack:
-		#player.enemy_atk()
-		velocity = Vector2.ZERO
+		
 
 	move_and_slide()
 
@@ -68,6 +70,9 @@ func _on_detection_area_entered(area):
 	if area.is_in_group("player_body"):
 		print("Player")
 		player_chase = true
+		if player_attack:
+			
+			velocity = Vector2.ZERO
 		target_position = area.global_position
 
 
@@ -79,7 +84,7 @@ func player_chasing(delta):
 	var direction = (target_position - global_position).normalized()
 	var distance_to_target = target_position.distance_to(global_position)
 	if distance_to_target < attack_range.scale.x / 2:
-		# Player is within attack range, stay still and attack
+		print("near")
 		velocity = Vector2.ZERO
 		
 	else:

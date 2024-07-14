@@ -28,6 +28,8 @@ var health = 100
 var regen = false
 @onready var healthbar = $Player_Health
 @onready var kappa_health_2 = $"../Kappa/KAPPA_Health2"
+@onready var attack_area = $Attack_Defense/CollisionShape2D
+
 
 var enemy_inrange = false
 var enemy_cooldown = true
@@ -121,6 +123,11 @@ func player_movement(delta):
 	var direction = Vector2(Input.get_action_strength("Right") - Input.get_action_strength("Left"), 0)
 	if direction.x != 0:
 		facing_direction = direction
+
+	if direction.x < 0:
+		attack_area.position.x = -110
+	elif direction.x > 0:
+		attack_area.position.x = 110
 
 	if dashing:
 		velocity.y = 0
