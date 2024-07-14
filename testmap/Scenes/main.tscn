@@ -1,14 +1,29 @@
-[gd_scene load_steps=15 format=3 uid="uid://o10m4vbsqi1m"]
+[gd_scene load_steps=16 format=3 uid="uid://o10m4vbsqi1m"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iat7f"]
 [ext_resource type="PackedScene" uid="uid://xbbm7yt4hljb" path="res://Scenes/shrine.tscn" id="2_1lm3k"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="4_go132"]
 [ext_resource type="PackedScene" uid="uid://cnqfl2e6a1il2" path="res://Scenes/Player.tscn" id="4_k6v5e"]
-[ext_resource type="Texture2D" uid="uid://dgrmkak6bykgx" path="res://Sprites/icon.svg" id="5_cw5kw"]
 [ext_resource type="Script" path="res://HealthBar/Scene/Kappa_Healthbar.gd" id="5_j2iay"]
 [ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/Scene/healthbar_2.tscn" id="5_t168k"]
 [ext_resource type="PackedScene" uid="uid://bco27vvwvmxq3" path="res://Scenes/KAPPA.tscn" id="7_74rcf"]
 [ext_resource type="PackedScene" uid="uid://ldxt1rtk0wlm" path="res://obstacle_placeholder.tscn" id="9_5sotv"]
+[ext_resource type="PackedScene" uid="uid://coypa4knmfpsl" path="res://sample.tscn" id="10_7maiu"]
+
+[sub_resource type="Animation" id="Animation_ruql5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1936, -75)]
+}
 
 [sub_resource type="Animation" id="Animation_b1osc"]
 resource_name = "move"
@@ -24,22 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1909, -82), Vector2(1909, -525)]
-}
-
-[sub_resource type="Animation" id="Animation_ruql5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1909, -82)]
+"values": [Vector2(1936, -75), Vector2(1936, -655)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_quav2"]
@@ -51,6 +51,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
 size = Vector2(124, 1080)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vg7p5"]
+size = Vector2(1852, 15)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xd74"]
 size = Vector2(22.25, 928.313)
 
@@ -61,6 +64,9 @@ script = ExtResource("1_iat7f")
 
 [node name="Shrine2" parent="." instance=ExtResource("2_1lm3k")]
 position = Vector2(1920, 0)
+
+[node name="Shrine3" parent="." instance=ExtResource("10_7maiu")]
+position = Vector2(1920, -1080)
 
 [node name="Obstacles" type="Node" parent="."]
 
@@ -81,7 +87,7 @@ position = Vector2(2423, 24)
 scale = Vector2(3.12, 0.159999)
 
 [node name="Obstacle Placeholder5" parent="Obstacles" instance=ExtResource("9_5sotv")]
-position = Vector2(1909, -82)
+position = Vector2(1936, -75)
 scale = Vector2(3.12, 0.159999)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Obstacle Placeholder5"]
@@ -101,7 +107,7 @@ offset_bottom = -77.0
 script = ExtResource("5_j2iay")
 
 [node name="Player" parent="." instance=ExtResource("4_k6v5e")]
-position = Vector2(779, 65)
+position = Vector2(697, 119)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
@@ -134,6 +140,14 @@ collision_mask = 5
 position = Vector2(2940, 0)
 shape = SubResource("RectangleShape2D_55i3f")
 
+[node name="scene2-3 connector" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene2-3 connector"]
+position = Vector2(1922, -523)
+shape = SubResource("RectangleShape2D_vg7p5")
+
 [node name="scene1-2 connector" type="Area2D" parent="."]
 collision_layer = 0
 
@@ -141,12 +155,5 @@ collision_layer = 0
 position = Vector2(960, -74)
 shape = SubResource("RectangleShape2D_8xd74")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(1150, -419)
-texture = ExtResource("5_cw5kw")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(773, -414)
-texture = ExtResource("5_cw5kw")
-
+[connection signal="body_exited" from="scene2-3 connector" to="Player/Camera2D" method="_on_scene_23_connector_body_exited"]
 [connection signal="body_exited" from="scene1-2 connector" to="Player/Camera2D" method="_on_scene_12_connector_body_exited"]
