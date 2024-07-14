@@ -2,4 +2,3 @@ res://Scenes/main.tscn
 res://Scenes/KAPPA.tscn
 res://Scenes/Player.tscn
 res://obstacle_placeholder.tscn
-res://Scenes/Camera2D.gd

@@ -1,6 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1720956378
+::res://::1720957369
 default_bus_layout.tres::AudioBusLayout::866110454817461540::1720757007::0::1::::<><>::
+obstacle_placeholder.tscn::PackedScene::779702226944780898::1720957227::0::1::::<><>::uid://dgrmkak6bykgx::::res://Sprites/icon.svg
 PlayerData.gd::GDScript::-1::1720757007::0::1::::PlayerData<>Resource<>::
 ::res://Code/::1720956369
 KAPPA.gd::GDScript::-1::1720956369::0::1::::enemies<>CharacterBody2D<>::
@@ -35,13 +36,13 @@ optimized_pause_menu.gd::GDScript::-1::1720757007::0::1::::OptimizedPauseMenu<>C
 pause_options_menu.gd::GDScript::-1::1720757007::0::1::::PauseOptionsMenu<>Control<>::
 resolution_mode_button.gd::GDScript::-1::1720757007::0::1::::<>Control<>::
 window_mode_button.gd::GDScript::-1::1720757007::0::1::::<>Control<>::
-::res://Scenes/::1720956369
-Camera2D.gd::GDScript::-1::1720757007::0::1::::<>Camera2D<>::
-KAPPA.tscn::PackedScene::2557397300195040840::1720956369::0::1::::<><>::res://Code/KAPPA.gd<>uid://g0klqgkjvpd4::::res://Sprites/sword_ice.png
+::res://Scenes/::1720957244
+Camera2D.gd::GDScript::-1::1720956832::0::1::::<>Camera2D<>::
+KAPPA.tscn::PackedScene::2557397300195040840::1720957227::0::1::::<><>::res://Code/KAPPA.gd<>uid://g0klqgkjvpd4::::res://Sprites/sword_ice.png
 main.gd::GDScript::-1::1720757007::0::1::::<>Node2D<>::
-main.tscn::PackedScene::1037858542572203296::1720956369::0::1::::<><>::res://Scenes/main.gd<>uid://xbbm7yt4hljb::::res://Scenes/shrine.tscn<>res://Scenes/Camera2D.gd<>uid://cnqfl2e6a1il2::::res://Scenes/Player.tscn<>uid://dgrmkak6bykgx::::res://Sprites/icon.svg<>res://HealthBar/Scene/Kappa_Healthbar.gd<>uid://djjni2gvwo737::::res://HealthBar/Scene/healthbar_2.tscn<>uid://bco27vvwvmxq3::::res://Scenes/KAPPA.tscn
+main.tscn::PackedScene::1037858542572203296::1720957244::0::1::::<><>::res://Scenes/main.gd<>uid://xbbm7yt4hljb::::res://Scenes/shrine.tscn<>res://Scenes/Camera2D.gd<>uid://cnqfl2e6a1il2::::res://Scenes/Player.tscn<>uid://dgrmkak6bykgx::::res://Sprites/icon.svg<>res://HealthBar/Scene/Kappa_Healthbar.gd<>uid://djjni2gvwo737::::res://HealthBar/Scene/healthbar_2.tscn<>uid://bco27vvwvmxq3::::res://Scenes/KAPPA.tscn<>uid://ldxt1rtk0wlm::::res://obstacle_placeholder.tscn
 map_node.tscn::PackedScene::1660382138022748349::1720757007::0::1::::<><>::uid://dgrmkak6bykgx::::res://Sprites/icon.svg
-Player.tscn::PackedScene::5718651033161566945::1720956369::0::1::::<><>::res://Code/Player.gd<>uid://dgrmkak6bykgx::::res://Sprites/icon.svg
+Player.tscn::PackedScene::5718651033161566945::1720957227::0::1::::<><>::res://Code/Player.gd<>uid://dgrmkak6bykgx::::res://Sprites/icon.svg
 shrine.tscn::PackedScene::1616491646673255367::1720757007::0::1::::<><>::uid://dcq474uap1t2c::::res://Sprites/shrine.png
 ::res://Songs/::1720757007
 BOSS.mp3::AudioStreamMP3::5241062644962771645::1720757007::1720757007::1::::<><>::

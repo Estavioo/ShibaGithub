@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://o10m4vbsqi1m"]
+[gd_scene load_steps=15 format=3 uid="uid://o10m4vbsqi1m"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iat7f"]
 [ext_resource type="PackedScene" uid="uid://xbbm7yt4hljb" path="res://Scenes/shrine.tscn" id="2_1lm3k"]
@@ -9,6 +9,44 @@
 [ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/Scene/healthbar_2.tscn" id="5_t168k"]
 [ext_resource type="PackedScene" uid="uid://bco27vvwvmxq3" path="res://Scenes/KAPPA.tscn" id="7_74rcf"]
 [ext_resource type="PackedScene" uid="uid://ldxt1rtk0wlm" path="res://obstacle_placeholder.tscn" id="9_5sotv"]
+
+[sub_resource type="Animation" id="Animation_b1osc"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1909, -82), Vector2(1909, -525)]
+}
+
+[sub_resource type="Animation" id="Animation_ruql5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1909, -82)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_quav2"]
+_data = {
+"RESET": SubResource("Animation_ruql5"),
+"move": SubResource("Animation_b1osc")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
 size = Vector2(124, 1080)
@@ -24,27 +62,33 @@ script = ExtResource("1_iat7f")
 [node name="Shrine2" parent="." instance=ExtResource("2_1lm3k")]
 position = Vector2(1920, 0)
 
-[node name="Node" type="Node" parent="."]
+[node name="Obstacles" type="Node" parent="."]
 
-[node name="Obstacle Placeholder" parent="Node" instance=ExtResource("9_5sotv")]
+[node name="Obstacle Placeholder" parent="Obstacles" instance=ExtResource("9_5sotv")]
 position = Vector2(2174, 296)
 scale = Vector2(2.68, 0.2)
 
-[node name="Obstacle Placeholder2" parent="Node" instance=ExtResource("9_5sotv")]
+[node name="Obstacle Placeholder2" parent="Obstacles" instance=ExtResource("9_5sotv")]
 position = Vector2(2599, 226)
 scale = Vector2(3.03215, 0.205584)
 
-[node name="Obstacle Placeholder3" parent="Node" instance=ExtResource("9_5sotv")]
+[node name="Obstacle Placeholder3" parent="Obstacles" instance=ExtResource("9_5sotv")]
 position = Vector2(1443, 116)
 scale = Vector2(3.12, 0.159999)
 
-[node name="Obstacle Placeholder4" parent="Node" instance=ExtResource("9_5sotv")]
+[node name="Obstacle Placeholder4" parent="Obstacles" instance=ExtResource("9_5sotv")]
 position = Vector2(2423, 24)
 scale = Vector2(3.12, 0.159999)
 
-[node name="Obstacle Placeholder5" parent="Node" instance=ExtResource("9_5sotv")]
+[node name="Obstacle Placeholder5" parent="Obstacles" instance=ExtResource("9_5sotv")]
 position = Vector2(1909, -82)
 scale = Vector2(3.12, 0.159999)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacles/Obstacle Placeholder5"]
+libraries = {
+"": SubResource("AnimationLibrary_quav2")
+}
+autoplay = "move"
 
 [node name="Kappa" parent="." instance=ExtResource("7_74rcf")]
 position = Vector2(-105, -30)
