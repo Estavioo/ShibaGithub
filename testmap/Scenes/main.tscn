@@ -48,14 +48,14 @@ _data = {
 "move": SubResource("Animation_b1osc")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
-size = Vector2(124, 1080)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vg7p5"]
 size = Vector2(1852, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xd74"]
-size = Vector2(22.25, 928.313)
+size = Vector2(0, 928.078)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55i3f"]
+size = Vector2(124, 1080)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_iat7f")
@@ -124,36 +124,48 @@ offset_right = 103.0
 offset_bottom = -62.0
 value = 100.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 5
+[node name="SceneConnectors" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1022, 0)
-shape = SubResource("RectangleShape2D_55i3f")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(2940, 0)
-shape = SubResource("RectangleShape2D_55i3f")
-
-[node name="scene2-3 connector" type="Area2D" parent="."]
+[node name="scene2-3 connector" type="Area2D" parent="SceneConnectors"]
 position = Vector2(0, -1)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene2-3 connector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneConnectors/scene2-3 connector"]
 position = Vector2(1922, -523)
 shape = SubResource("RectangleShape2D_vg7p5")
 
-[node name="scene1-2 connector" type="Area2D" parent="."]
+[node name="scene1-2 connector" type="Area2D" parent="SceneConnectors"]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1-2 connector"]
-position = Vector2(960, -74)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneConnectors/scene1-2 connector"]
+position = Vector2(960, -73.0391)
 shape = SubResource("RectangleShape2D_8xd74")
 
-[connection signal="body_exited" from="scene2-3 connector" to="Player/Camera2D" method="_on_scene_23_connector_body_exited"]
-[connection signal="body_exited" from="scene1-2 connector" to="Player/Camera2D" method="_on_scene_12_connector_body_exited"]
+[node name="WorldBorders" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBorders"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/StaticBody2D"]
+position = Vector2(-1022, 0)
+shape = SubResource("RectangleShape2D_55i3f")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="WorldBorders"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/StaticBody2D3"]
+position = Vector2(891, -1082)
+shape = SubResource("RectangleShape2D_55i3f")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="WorldBorders"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/StaticBody2D2"]
+position = Vector2(2940, 0)
+shape = SubResource("RectangleShape2D_55i3f")
+
+[connection signal="body_exited" from="SceneConnectors/scene2-3 connector" to="Player/Camera2D" method="_on_scene_23_connector_body_exited"]
+[connection signal="body_exited" from="SceneConnectors/scene1-2 connector" to="Player/Camera2D" method="_on_scene_12_connector_body_exited"]
