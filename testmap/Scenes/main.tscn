@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://HealthBar/Scene/Kappa_Healthbar.gd" id="5_j2iay"]
 [ext_resource type="PackedScene" uid="uid://djjni2gvwo737" path="res://HealthBar/Scene/healthbar_2.tscn" id="5_t168k"]
 [ext_resource type="PackedScene" uid="uid://bco27vvwvmxq3" path="res://Scenes/KAPPA.tscn" id="7_74rcf"]
-[ext_resource type="PackedScene" path="res://obstacle_placeholder.tscn" id="9_5sotv"]
-[ext_resource type="PackedScene" path="res://sample.tscn" id="10_7maiu"]
+[ext_resource type="PackedScene" uid="uid://ldxt1rtk0wlm" path="res://obstacle_placeholder.tscn" id="9_5sotv"]
+[ext_resource type="PackedScene" uid="uid://coypa4knmfpsl" path="res://sample.tscn" id="10_7maiu"]
 
 [sub_resource type="Animation" id="Animation_ruql5"]
 length = 0.001

@@ -1,5 +1,2 @@
-res://Scenes/main.tscn
-res://Scenes/KAPPA.tscn
 res://Scenes/Player.tscn
-res://Code/Player.gd
-res://Code/KAPPA.gd
+res://Scenes/main.tscn
